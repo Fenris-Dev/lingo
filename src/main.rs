@@ -1,8 +1,9 @@
-use lingo::{*, binery::Binary, morse::MorseCode, hex::Hexadecimal};
+use lingo::{*, binery::Binary, morse::MorseCode, hex::Hexadecimal, braille::Braille};
 
 fn main() 
 {
-    
+
+
     let module = Binary {};
     let text = "Hello, world!";
     println!("bny: {} | {:?}", module.is_language(&text),&text);
@@ -24,7 +25,7 @@ fn main()
     println!("");
 
     let module = Hexadecimal {};
-    let text = "Hello, world!";
+    let text = "hello, world!";
     println!("hex: {} | {:?}", module.is_language(&text),&text);
     let text = module.from_english(&text);
     println!("hex: {} | {:?}", module.is_language(&text),&text);
@@ -32,9 +33,17 @@ fn main()
     println!("hex: {} | {:?}", module.is_language(&text),&text);
 
     println!("");
+
+    let module = Braille::new();
+    let text = "hello, world!";
+    println!("brl: {} | {:?}", module.is_language(&text),&text);
+    let text = module.from_english(&text);
+    println!("brl: {} | {:?}", module.is_language(&text),&text);
+    let text = module.to_english(&text);
+    println!("brl: {} | {:?}", module.is_language(&text),&text);
+
 }
 
 
 //Braille
 //Semaphore
-//Hexadeciamal
